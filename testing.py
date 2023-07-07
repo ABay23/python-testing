@@ -9,3 +9,12 @@ def caraota_blanca():
   
   
 caraota_blanca()
+
+x = 23
+y = 'John'
+
+print("%s is %d years Old" %(y, x))
+
+astring = "Hello world!"
+print(astring[3:7])
+print(astring[3:7:6])
