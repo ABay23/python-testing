@@ -131,13 +131,15 @@ def print_list(self):  # Create a method passing self
         temp = temp.next
 
 # * Append new node to the end of the LL
-    def append(self, value):
-        new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
-        else:
-            self.tail.next = new_node  # * We change the pointer to the next node
-            self.tail = new_node  # * We change the tail to the new node
-        self.length += 1
-        return True
+
+
+def append(self, value):
+    new_node = Node(value)
+    if self.head is None:
+        self.head = new_node
+        self.tail = new_node
+    else:
+        self.tail.next = new_node  # * We change the pointer to the next node
+        self.tail = new_node  # * We change the tail to the new node
+    self.length += 1
+    return True
