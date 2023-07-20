@@ -46,5 +46,6 @@ class LinkedList:
 
 
 my_linked_list = LinkedList(1)
+my_linked_list = LinkedList(3)
 my_linked_list = LinkedList.append_value(2)
 my_linked_list = LinkedList.print_list()
