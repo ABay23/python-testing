@@ -18,3 +18,30 @@ print(year / 400)
 #     print("Leap year.")
 # else:
 #     print("Not leap year.")
+
+# 🚨 Don't change the code below 👇
+print("Welcome to Python Pizza Deliveries!")
+size = input("What size pizza do you want? S, M, or L ")
+add_pepperoni = input("Do you want pepperoni? Y or N ")
+extra_cheese = input("Do you want extra cheese? Y or N ")
+# 🚨 Don't change the code above 👆
+
+# Write your code below this line 👇
+pie = 0
+if size == "S":
+    pie = 15
+elif size == "M":
+    pie = 20
+else:
+    pie = 25
+
+if add_pepperoni == "Y":
+    if size == "S":
+        pie += 2
+    else:
+        pie += 3
+
+if extra_cheese == "Y":
+    pie += 1
+
+print(f"Your final bill is: ${pie}.")
