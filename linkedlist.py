@@ -16,9 +16,9 @@ class LinkedList:
         self.length = + 1
 
     def print_list(self):
-        temp = self.next
+        temp = self.head
         while temp is not None:
-            print(temp.valie)
+            print(temp.value)
             temp = temp.next
 
     def append_value(self, value):
@@ -30,22 +30,29 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
         self.length += 1
+        return True
 
     def pop_value(self) -> None:
         if self.length == 0:
             return None
         prev = self.head
         temp = self.head
-        while temp is not None:
+        while (temp.next):
             prev = temp
-            temp = self.next
+            temp = temp.next
         self.tail = prev
         self.tail.next = None
         self.length -= 1
-        return temp
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp.value
 
 
 my_linked_list = LinkedList(1)
-my_linked_list = LinkedList(3)
-my_linked_list = LinkedList.append_value(2)
-my_linked_list = LinkedList.print_list()
+# my_linked_list = LinkedList(3)
+my_linked_list.append_value(2)
+# my_linked_list.print_list()
+print(my_linked_list.pop_value())
+print(my_linked_list.pop_value())
+print(my_linked_list.pop_value())
