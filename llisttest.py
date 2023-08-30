@@ -49,7 +49,7 @@ class Linked_List:
 my_new_list = Linked_List(6)
 my_new_list.append(4)
 my_new_list.append(5)
-my_new_list.append(10)
+# my_new_list.append(10)
 
 my_new_list.print()
 
