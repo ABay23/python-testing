@@ -45,6 +45,12 @@ class Linked_List:
                 self.tail = None
             return temp
 
+    def prepend(self):
+        pass
+
+    def pop_first(self):
+        pass
+
 
 my_new_list = Linked_List(6)
 my_new_list.append(4)
