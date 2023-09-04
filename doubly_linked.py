@@ -39,10 +39,49 @@ class DoublyLinkedList:
         return temp
 
     def prepend(self, value):
-        pass
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.length += 1
+        return True
 
     def pop_first(self):
-        pass
+        if self.length == 0:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            temp.next = None
+            self.head.prev = None
+        self.length -= 1
+        return temp
 
     def get_value(self, index):
+        if index < 0 and index > self.lenght:
+            return None
+        if index < self.length/2:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                temp = temp.prev
+        return temp
+
+    def set_value(self, index, value):
+        pass
+
+    def insert_value(self, index, value):
+        pass
+
+    def remove(self, index):
         pass
