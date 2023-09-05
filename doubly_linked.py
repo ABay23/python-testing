@@ -78,10 +78,47 @@ class DoublyLinkedList:
         return temp
 
     def set_value(self, index, value):
-        pass
+        temp = self.get_value(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
 
     def insert_value(self, index, value):
-        pass
+        new_node = Node(value)
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+
+        after = self.get_value(index)
+        before = after.prev
+
+        before.next = new_node
+        after.prev = new_node
+        new_node.prev = before
+        new_node.next = after
+
+        self.length += 1
+        return True
 
     def remove(self, index):
-        pass
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.pop_first(index)
+        if index == self.length:
+            return self.pop(index)
+
+        temp = self.get_value(index)
+
+        before = temp.prev
+        before.next = temp.next
+        temp.next.prev = before
+        temp.prev = None
+        temp.next = None
+
+        self.length -= 1
+        return temp
