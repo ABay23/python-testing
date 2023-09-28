@@ -31,8 +31,17 @@ class MaxHeap:
 
         max_value = self.heap[0]
         self.heap[0] = self.heap.pop()
-        self.sink_down(0)
+        self._sink_down(0)
         return max_value
+
+    def _sink_down(self, index):
+        max_index = index
+        while True:
+            left_index = self.left_child(index)
+            rigth_index = self.right_child(index)
+
+            if self.heap[left_index] > self.heap[max_index]:
+                max_index = left_index
 
 
 my_heap = MaxHeap()
