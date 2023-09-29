@@ -2,16 +2,35 @@ class MaxHeap:
     def __init__(self):
         self.heap = []
 
-    def left_child(self, index):
+    def _sink_down(self, index):
+        max_index = index
+
+        while True:
+            left_ve = self._left_child(index)
+            rigth_ve = self._right_child(index)
+
+            if (left_ve < len(self.heap) and self.heap[left_ve] > self.heap[max_index]):
+                max_index = left_ve
+
+            if (rigth_ve < len(self.heap) and self.heap[rigth_ve] > self.heap[max_index]):
+                max_index = rigth_ve
+
+            if max_index != index:
+                self._swap(index, max_index)
+                index = max_index
+            else:
+                return
+
+    def _left_child(self, index):
         return 2 * index + 1
 
-    def right_child(self, index):
+    def _right_child(self, index):
         return 2 * index + 2
 
     def _parent(self, index):
         return (index - 1) // 2
 
-    def swap(self, index1, index2):
+    def _swap(self, index1, index2):
         self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
 
     def insert(self, value):
@@ -19,10 +38,10 @@ class MaxHeap:
         current = len(self.heap) - 1
 
         while current > 0 and self.heap[current] > self.heap[self._parent(current)]:
-            self.swap(current, self._parent(current))
+            self._swap(current, self._parent(current))
             current = self._parent(current)
 
-    def remove(self):
+    def _remove(self):
         if len(self.heap) == 0:
             return None
 
@@ -32,29 +51,42 @@ class MaxHeap:
         max_value = self.heap[0]
         self.heap[0] = self.heap.pop()
         self._sink_down(0)
+
         return max_value
-
-    def _sink_down(self, index):
-        max_index = index
-        while True:
-            left_index = self.left_child(index)
-            rigth_index = self.right_child(index)
-
-            if self.heap[left_index] > self.heap[max_index]:
-                max_index = left_index
 
 
 my_heap = MaxHeap()
-my_heap.insert(99)
-my_heap.insert(72)
-my_heap.insert(61)
-my_heap.insert(58)
 
-print(my_heap.heap)
-
-my_heap.insert(100)
-
-print(my_heap.heap)
-
+my_heap.insert(95)
 my_heap.insert(75)
+my_heap.insert(80)
+my_heap.insert(55)
+my_heap.insert(60)
+my_heap.insert(50)
+my_heap.insert(65)
+
 print(my_heap.heap)
+
+my_heap._remove()
+print(my_heap.heap)
+
+my_heap._remove()
+print(my_heap.heap)
+
+# my_heap = MaxHeap()
+# my_heap.insert(99)
+# my_heap.insert(72)
+# my_heap.insert(61)
+# my_heap.insert(58)
+
+# print(my_heap.heap)
+
+# my_heap.insert(100)
+
+# print(my_heap.heap)
+
+# my_heap.insert(75)
+# print(my_heap.heap)
+
+# my_heap._remove()
+# print(my_heap.heap)
